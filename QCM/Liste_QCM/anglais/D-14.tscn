@@ -1,0 +1,330 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://QCM/Bouttons/Reponse/Bouton_Reponse_QCM.tscn" type="PackedScene" id=1]
+[ext_resource path="res://QCM/Bouttons/Valider/Bouton_Valider_QCM.tscn" type="PackedScene" id=2]
+[ext_resource path="res://QCM/Texture Fond.png" type="Texture" id=3]
+[ext_resource path="res://QCM/arbitre/arbitre.tscn" type="PackedScene" id=4]
+[ext_resource path="res://QCM/Time/clock/Texture_Clock.png" type="Texture" id=6]
+[ext_resource path="res://QCM/Time/clock/Texture_Pointeuse.png" type="Texture" id=9]
+[ext_resource path="res://QCM/reward_Box/Texture_Fond.png" type="Texture" id=10]
+[ext_resource path="res://QCM/dialogue/Texture_Dialogue.png" type="Texture" id=11]
+[ext_resource path="res://QCM/Time/clock/Time.gd" type="Script" id=12]
+[ext_resource path="res://QCM/QCM.gd" type="Script" id=13]
+[ext_resource path="res://QCM/dialogue/Texte.gd" type="Script" id=14]
+[ext_resource path="res://QCM/reward_Box/font/Normal.tres" type="DynamicFont" id=15]
+[ext_resource path="res://QCM/reward_Box/font/Bold.tres" type="DynamicFont" id=16]
+[ext_resource path="res://QCM/reward_Box/Texture_Trophey.png" type="Texture" id=17]
+[ext_resource path="res://QCM/reward_Box/Texture_Juste.png" type="Texture" id=18]
+[ext_resource path="res://QCM/reward_Box/Valid.gd" type="Script" id=19]
+[ext_resource path="res://QCM/reward_Box/Texture_Faux.png" type="Texture" id=20]
+[ext_resource path="res://QCM/dialogue/font/Bold.tres" type="DynamicFont" id=21]
+[ext_resource path="res://QCM/dialogue/font/Normal.tres" type="DynamicFont" id=22]
+[ext_resource path="res://QCM/Time/font/static/Oswald-Bold.ttf" type="DynamicFontData" id=23]
+[ext_resource path="res://QCM/Bouttons/Valider/End_Timer.gd" type="Script" id=24]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 23 )
+
+[node name="Fond QCM" type="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+seconde = 50
+minute = 0
+Question = "[b]Question pour[/b] %s :
+Simon suggested that the customer service department find a good way to collect customer information as ___as possible."
+textReponseA = "[b]Reponse A :[/b]
+Necessarily"
+textReponseB = "[b]Reponse B :[/b]
+Definitely"
+textReponseC = "[b]Reponse C :[/b]
+Quickly"
+textReponseD = "[b]Reponse D :[/b]
+Predominantly"
+ReponseA = false
+ReponseC = true
+trophey_reward = 7
+point = 3
+anglais = true
+
+[node name="Margin all" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QCM" type="VBoxContainer" parent="Margin all"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 580.0
+custom_constants/separation = 25
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Question Box" type="HBoxContainer" parent="Margin all/QCM"]
+margin_right = 984.0
+margin_bottom = 194.0
+custom_constants/separation = 15
+
+[node name="Box arbitre time" type="VBoxContainer" parent="Margin all/QCM/Question Box"]
+margin_right = 150.0
+margin_bottom = 194.0
+
+[node name="Fond arbitre" parent="Margin all/QCM/Question Box/Box arbitre time" instance=ExtResource( 4 )]
+
+[node name="Margin Time" type="CenterContainer" parent="Margin all/QCM/Question Box/Box arbitre time"]
+margin_top = 154.0
+margin_right = 150.0
+margin_bottom = 194.0
+
+[node name="Time Box" type="HBoxContainer" parent="Margin all/QCM/Question Box/Box arbitre time/Margin Time"]
+margin_left = 20.0
+margin_right = 130.0
+margin_bottom = 40.0
+custom_constants/separation = 20
+script = ExtResource( 12 )
+
+[node name="Timer" type="Timer" parent="Margin all/QCM/Question Box/Box arbitre time/Margin Time/Time Box"]
+
+[node name="clock Texture" type="TextureRect" parent="Margin all/QCM/Question Box/Box arbitre time/Margin Time/Time Box"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="pointeuse" type="TextureRect" parent="Margin all/QCM/Question Box/Box arbitre time/Margin Time/Time Box/clock Texture"]
+modulate = Color( 0.101961, 0.184314, 0.431373, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_rotation = -90.0
+rect_pivot_offset = Vector2( 20, 20 )
+texture = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time" type="Label" parent="Margin all/QCM/Question Box/Box arbitre time/Margin Time/Time Box"]
+margin_left = 60.0
+margin_top = 2.0
+margin_right = 110.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 50, 36 )
+custom_fonts/font = SubResource( 1 )
+text = "1:00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dialogue box" type="TextureRect" parent="Margin all/QCM/Question Box"]
+margin_left = 165.0
+margin_right = 984.0
+margin_bottom = 194.0
+size_flags_horizontal = 3
+texture = ExtResource( 11 )
+
+[node name="Margin Dialogue" type="MarginContainer" parent="Margin all/QCM/Question Box/dialogue box"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 15
+custom_constants/margin_left = 45
+custom_constants/margin_bottom = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Texte" type="RichTextLabel" parent="Margin all/QCM/Question Box/dialogue box/Margin Dialogue"]
+margin_left = 45.0
+margin_top = 15.0
+margin_right = 799.0
+margin_bottom = 179.0
+custom_fonts/bold_font = ExtResource( 21 )
+custom_fonts/normal_font = ExtResource( 22 )
+bbcode_enabled = true
+bbcode_text = "[b]Question pour le [color=blue]joueur X[/color] :[/b]
+Quel est [color=red]la question[/color] que tu vas entrer [color=red]ici[/color] ?"
+text = "Question pour le joueur X :
+Quel est la question que tu vas entrer ici ?"
+script = ExtResource( 14 )
+
+[node name="Center Boutons" type="CenterContainer" parent="Margin all/QCM"]
+margin_top = 219.0
+margin_right = 984.0
+margin_bottom = 449.0
+mouse_filter = 1
+
+[node name="boutons" type="VBoxContainer" parent="Margin all/QCM/Center Boutons"]
+margin_left = 27.0
+margin_right = 957.0
+margin_bottom = 230.0
+custom_constants/separation = 30
+
+[node name="boutons haut" type="HBoxContainer" parent="Margin all/QCM/Center Boutons/boutons"]
+margin_right = 930.0
+margin_bottom = 100.0
+custom_constants/separation = 30
+
+[node name="Reponse A" parent="Margin all/QCM/Center Boutons/boutons/boutons haut" instance=ExtResource( 1 )]
+texte = "[b]Reponse A :[/b]
+ proposition 1..."
+
+[node name="Reponse B" parent="Margin all/QCM/Center Boutons/boutons/boutons haut" instance=ExtResource( 1 )]
+margin_left = 480.0
+margin_right = 930.0
+texte = "[b]Reponse B :[/b]
+ proposition 2..."
+
+[node name="boutons bas" type="HBoxContainer" parent="Margin all/QCM/Center Boutons/boutons"]
+margin_top = 130.0
+margin_right = 930.0
+margin_bottom = 230.0
+custom_constants/separation = 30
+
+[node name="Reponse C" parent="Margin all/QCM/Center Boutons/boutons/boutons bas" instance=ExtResource( 1 )]
+texte = "[b]Reponse C :[/b]
+ proposition 3..."
+
+[node name="Reponse D" parent="Margin all/QCM/Center Boutons/boutons/boutons bas" instance=ExtResource( 1 )]
+margin_left = 480.0
+margin_right = 930.0
+texte = "[b]Reponse D :[/b]
+ proposition 4..."
+
+[node name="Onglet recompense" type="TextureRect" parent="Margin all/QCM"]
+margin_top = 474.0
+margin_right = 984.0
+margin_bottom = 560.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 10 )
+
+[node name="Margin cadre" type="MarginContainer" parent="Margin all/QCM/Onglet recompense"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_clip_content = true
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="recompense et valid" type="HBoxContainer" parent="Margin all/QCM/Onglet recompense/Margin cadre"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 974.0
+margin_bottom = 76.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 2
+
+[node name="Margin reward" type="MarginContainer" parent="Margin all/QCM/Onglet recompense/Margin cadre/recompense et valid"]
+margin_right = 706.0
+margin_bottom = 66.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_top = 10
+custom_constants/margin_left = 20
+
+[node name="CenterMyText" type="VBoxContainer" parent="Margin all/QCM/Onglet recompense/Margin cadre/recompense et valid/Margin reward"]
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 706.0
+margin_bottom = 66.0
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reward Text" type="RichTextLabel" parent="Margin all/QCM/Onglet recompense/Margin cadre/recompense et valid/Margin reward/CenterMyText"]
+margin_right = 686.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 0, 56 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/bold_font = ExtResource( 15 )
+custom_fonts/normal_font = ExtResource( 16 )
+bbcode_enabled = true
+bbcode_text = "X [color=#ffd700][b]trophés[/b][/color] à gagner en répondant juste"
+text = "X trophés à gagner en répondant juste"
+scroll_active = false
+
+[node name="Trophey" type="TextureRect" parent="Margin all/QCM/Onglet recompense/Margin cadre/recompense et valid"]
+margin_left = 710.0
+margin_right = 780.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 70, 0 )
+size_flags_vertical = 3
+texture = ExtResource( 17 )
+
+[node name="Valid" type="TextureRect" parent="Margin all/QCM/Onglet recompense/Margin cadre/recompense et valid/Trophey"]
+margin_left = 24.0
+margin_top = 34.0
+margin_right = 59.0
+margin_bottom = 69.0
+texture = ExtResource( 20 )
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+faux = ExtResource( 20 )
+juste = ExtResource( 18 )
+
+[node name="Center Valid" type="CenterContainer" parent="Margin all/QCM/Onglet recompense/Margin cadre/recompense et valid"]
+margin_left = 784.0
+margin_right = 964.0
+margin_bottom = 66.0
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Margin all/QCM/Onglet recompense/Margin cadre/recompense et valid/Center Valid"]
+margin_top = 13.0
+margin_right = 180.0
+margin_bottom = 53.0
+mouse_filter = 1
+custom_constants/margin_right = 10
+
+[node name="Boutton Valid" parent="Margin all/QCM/Onglet recompense/Margin cadre/recompense et valid/Center Valid/MarginContainer" instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 170.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 150, 30 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="End_Timer" type="Timer" parent="Margin all/QCM/Onglet recompense/Margin cadre/recompense et valid/Center Valid/MarginContainer"]
+script = ExtResource( 24 )
+[connection signal="timer_end" from="Margin all/QCM/Question Box/Box arbitre time/Margin Time/Time Box" to="." method="show_reponse"]
+[connection signal="timeout" from="Margin all/QCM/Question Box/Box arbitre time/Margin Time/Time Box/Timer" to="Margin all/QCM/Question Box/Box arbitre time/Margin Time/Time Box" method="_on_Timer_timeout"]
+[connection signal="show_end" from="Margin all/QCM/Question Box/dialogue box/Margin Dialogue/Texte" to="." method="_on_Texte_show_end"]
+[connection signal="show_end" from="Margin all/QCM/Center Boutons/boutons/boutons haut/Reponse A" to="." method="_on_Reponse_A_show_end"]
+[connection signal="toggled" from="Margin all/QCM/Center Boutons/boutons/boutons haut/Reponse A" to="." method="_on_Reponse_A_toggled"]
+[connection signal="toggled" from="Margin all/QCM/Center Boutons/boutons/boutons haut/Reponse B" to="." method="_on_Reponse_B_toggled"]
+[connection signal="toggled" from="Margin all/QCM/Center Boutons/boutons/boutons bas/Reponse C" to="." method="_on_Reponse_C_toggled"]
+[connection signal="toggled" from="Margin all/QCM/Center Boutons/boutons/boutons bas/Reponse D" to="." method="_on_Reponse_D_toggled"]
+[connection signal="pressed" from="Margin all/QCM/Onglet recompense/Margin cadre/recompense et valid/Center Valid/MarginContainer/Boutton Valid" to="Margin all/QCM/Onglet recompense/Margin cadre/recompense et valid/Center Valid/MarginContainer/Boutton Valid" method="_on_Boutton_Valid_pressed"]
+[connection signal="pressed" from="Margin all/QCM/Onglet recompense/Margin cadre/recompense et valid/Center Valid/MarginContainer/Boutton Valid" to="." method="show_reponse"]
+[connection signal="timeout" from="Margin all/QCM/Onglet recompense/Margin cadre/recompense et valid/Center Valid/MarginContainer/End_Timer" to="Margin all/QCM/Onglet recompense/Margin cadre/recompense et valid/Center Valid/MarginContainer/End_Timer" method="_on_End_Timer_timeout"]
+[connection signal="timer_end" from="Margin all/QCM/Onglet recompense/Margin cadre/recompense et valid/Center Valid/MarginContainer/End_Timer" to="." method="_on_End_Timer_timer_end"]

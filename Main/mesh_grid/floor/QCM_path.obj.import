@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/QCM_path.obj-e2c1a85e36ccc51598527845614a83ac.mesh"
+
+[deps]
+
+files=[ "res://.import/QCM_path.obj-e2c1a85e36ccc51598527845614a83ac.mesh" ]
+
+source_file="res://Main/mesh_grid/floor/QCM_path.obj"
+dest_files=[ "res://.import/QCM_path.obj-e2c1a85e36ccc51598527845614a83ac.mesh", "res://.import/QCM_path.obj-e2c1a85e36ccc51598527845614a83ac.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

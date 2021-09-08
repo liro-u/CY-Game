@@ -1,0 +1,107 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Main/result/font/static/Oswald-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Main/result/font/static/Oswald-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Main/result/return.png" type="Texture" id=3]
+[ext_resource path="res://Main/result/fond2.png" type="Texture" id=4]
+[ext_resource path="res://Main/result/result.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[node name="result" type="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+paraMathApp = "Le cursus ingénieur mathématiques appliquées propose une formation centrée sur les sciences, plus particulièrement les mathématiques comme l’indique son titre. Pour ce poste, il est très important d’avoir des connaissances pluridisciplinaires. Son travail consiste à apporter des solutions à un problème concret en proposant un modèle mathématique. L’anglais est également une matière importante, sachant que selon les chiffres de CYTECH, 16 %des diplômés débutent leur carrière à l’international."
+paraInfo = "Le cursus ingénieur informatique, propose une formation centrée sur les sciences, plus particulièrement l’informatique et les mathématiques. Le rôle de l’ingénieur informatique estpluridisciplinaire, il peut être amené à faire du développement informatique et de logiciel, mais aussi s’occuper de la gestion informatique. L’anglais est également une matière importante, sachant que selon les chiffres de CYTECH, 16 % des diplômés débutent leur carrière à l’international."
+paraMathEco = "La formation ingénieur mathématiques, économie et finance propose des cours scientifiques tels que les mathématiques et l’informatique, mais aussi des cours d’économie et de finance.  L’anglais est également une matière à prendre en compte car ce secteur d’emploi traite avec le national et l’international."
+paraBioTeck = "La Biotechnologie est la discipline qui lie les sciences du vivant (biologie) avec les nouvelles technologies telles que l’informatique, la physique et la chimie.Leur missionen général est de modifier des êtresvivants ou non vivants aux fins de la production de connaissances, de biens et de services. Il y a de nombreuses spécialités comme les biotechnologies vertes qui se penchent sur l’agriculture ou rouge qui se penchent vers lemédical mais vous aurez le temps de choisir les spécialités plus tard."
+paraGenieC = "Ce sont les maîtres d'œuvres des ouvrages dans leur ensemble. Ils supervisent de A à Z une constructionde l’appeld’offre à l'élaboration des plans jusqu’auxsolutionstechniques et environnementalesjusqu'à la réalisation finale.  Les études pour accéder à ce poste sont BAC +5 souvent en passant par des prépa MP,PC,PSImais CY-tech propose aussi cette option. Pour devenir ingénieur en génie civil, il faut des compétences techniques très poussées notamment en mathématiqueset en physique. De plus, ce travail demande une grande adaptabilité."
+paraMeca = "Cette filière est plutôt très vaste car elle peut correspondre à des personnes qui cherchent des études supérieures poussées mais aussi pour ceux qui veulent entrer dans le monde du travail tôt. Celle-ci 
+ne dure que 2 ansàCy-tech puis ils sont intégrés à l'école Supmécaen première année du cycle ingénieur. En effet, la filière mécanique demande plus de compétences manuelles que intellectuelles. Pour cette filière,il existe plusieurs moyens par exemple CAP, BAC pro, BTS, DUT etc."
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 580.0
+
+[node name="titre" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_right = 984.0
+margin_bottom = 90.0
+custom_fonts/font = SubResource( 1 )
+text = "Nom de la Filiere"
+
+[node name="para" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+margin_top = 94.0
+margin_right = 984.0
+margin_bottom = 481.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/bold_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
+text = "petit para pour expliquer plein de truc sur ce quest la filiere etc 
+plein de detail et puis voila"
+
+[node name="Control" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 485.0
+margin_right = 984.0
+margin_bottom = 560.0
+size_flags_horizontal = 3
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/Control"]
+margin_left = 342.0
+margin_right = 642.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 300, 75 )
+texture_normal = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Control/TextureButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 4 )
+text = "Retour"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Control/TextureButton" to="." method="_on_TextureButton_pressed"]
