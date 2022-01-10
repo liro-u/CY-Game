@@ -61,7 +61,7 @@ var task=20
 onready var camera=$"camera/InterpolatedCamera"
 
 func list_files(path):
-	var files =[]
+	var files = []
 	var dir = Directory.new()
 	dir.open(path)
 	dir.list_dir_begin()

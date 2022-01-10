@@ -8,6 +8,7 @@ onready var Name4=$"MarginContainer/VBoxContainer/Control/nameplayer/PlayerNameE
 onready var valeurnode=$"MarginContainer/VBoxContainer/Control/reglage/question par personne/valeur"
 onready var commentairenode=$"MarginContainer/VBoxContainer/Control/reglage/question par personne/temps"
 var state=0
+
 func _on_TextureButton_pressed():
 	var newgame=game.instance()
 	set_new_name(Name1,"playerName1",newgame)
